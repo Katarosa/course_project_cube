@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+#  fastapi:
+#    build: .
+  postgres:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: "/data/postgres"
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      course_project:
+
+networks:
+  course_project:
+
+volumes:
+  postgres:
